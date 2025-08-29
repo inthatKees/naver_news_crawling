@@ -15,7 +15,7 @@ Python으로 네이버 뉴스 검색 결과를 크롤링해 CSV로 저장하고,
 - `main.py`: 네이버 뉴스 크롤러 실행 스크립트
 - `merge_csv_by_quarter.py`: 크롤링 결과 CSV를 분기 단위로 병합하는 유틸리티
 - `requirements.txt`: 의존성 목록
-- `out/naver_news_crawling_result/`: 결과 CSV 출력 디렉터리(자동 생성)
+- `out/`: 결과 CSV 출력 디렉터리(자동 생성)
 
 ### 요구 사항
 - Python 3.8+
@@ -43,7 +43,7 @@ pip install -r requirements.txt
   - 또는 `--year 2024 --quarter 1`
 - **옵션**:
   - `--maxpage`: 페이지 수(페이지당 10건). 기본 `200`
-  - `--result-path`: 결과 저장 경로. 기본 `out/naver_news_crawling_result/`
+  - `--result-path`: 결과 저장 경로. 기본 `out/`
   - `--sleep-between`: 키워드 간 대기(초). 기본 `5.0`
 
 예시:
@@ -67,23 +67,23 @@ python main.py --year 2023 --quarter 4 --keywords AI \
 
 - 사용 가능한 분기 목록 보기:
 ```bash
-python merge_csv_by_quarter.py --list --result-path out/naver_news_crawling_result/
+python merge_csv_by_quarter.py --list --result-path out/
 ```
 
 - 연도/분기로 병합(권장: 크롤러의 파일명 규칙과 동일):
 ```bash
-python merge_csv_by_quarter.py --year 2024 --quarter 1 --result-path out/naver_news_crawling_result/
+python merge_csv_by_quarter.py --year 2024 --quarter 1 --result-path out/
 ```
-생성 파일 예시: `out/naver_news_crawling_result/merged_24Q1_quarter.csv`
+생성 파일 예시: `out/merged_24Q1_quarter.csv`
 
 - 날짜 범위로 병합(레거시 파일명 패턴 대응):
 ```bash
 python merge_csv_by_quarter.py \
   --start-date 24.01.01 \
   --end-date   24.03.31 \
-  --result-path out/naver_news_crawling_result/
+  --result-path out/
 ```
-생성 파일 예시: `out/naver_news_crawling_result/merged_24.01.01_24.03.31_quarter.csv`
+생성 파일 예시: `out/merged_24.01.01_24.03.31_quarter.csv`
 
 참고: 현재 크롤러의 파일명은 `YYQ{분기}_*.csv` 형식입니다. 일반적으로는 `--year/--quarter` 방식을 사용하세요.
 
