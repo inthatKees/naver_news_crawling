@@ -1,3 +1,4 @@
+# root project의 기존 코드 백업 
 # -*- coding: utf-8 -*-
 from bs4 import BeautifulSoup
 from datetime import datetime
